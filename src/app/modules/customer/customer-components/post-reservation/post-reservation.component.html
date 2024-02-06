@@ -1,0 +1,47 @@
+<div style="margin-top: 50px;">
+    <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
+        <div class="parent">
+            <div class="child">
+                <div nz-row class="imgDiv">
+                    <h2 style="margin-left: 230px;">Reservation Request</h2>
+                </div>
+
+                <form nz-form [formGroup]="validateForm">
+                    <div nz-row>
+
+                        <div nz-col nzSpan="24" style="margin-top: 20px;">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This input is required!">
+                                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a table type" formControlName="tableType">
+                                        <nz-option *ngFor="let table of TableType" nzLabel={{table}} nzValue={{table}}></nz-option>
+                                    </nz-select>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback>
+                                    <nz-date-picker nzFormat="yyyy-MM-dd HH:mm"
+                                    nzPlaceHolder="Select date and time" [nzShowTime]="{nzFormat:'HH:mm'}" formControlName="dateTime">
+                                </nz-date-picker>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This input is required!">
+                                    <textarea rows="1" nz-input placeholder="Description" 
+                                    formControlName="description"></textarea>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                    </div>
+                    
+                    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" (click)="postReservation()">Submit</button>
+                </form>
+            </div>
+        </div>
+    </nz-spin>
+</div>
